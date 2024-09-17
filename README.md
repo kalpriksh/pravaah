@@ -1,4 +1,4 @@
-# pravaah
+# pravaah 🍃
 ## description
 no-code platform for your data pipelining needs 🚀
 

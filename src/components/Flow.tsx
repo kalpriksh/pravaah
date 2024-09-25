@@ -15,14 +15,15 @@ import "@xyflow/react/dist/style.css";
 import { initialNodes, nodeTypes, type CustomNodeType } from "./nodes";
 import { initialEdges, edgeTypes, type CustomEdgeType } from "./edges";
 
+import  TestCustomComponent  from "./TestCustomComponent"
+
 export default function App() {
   const [nodes, , onNodesChange] = useNodesState<CustomNodeType>(initialNodes);
+  
   const [edges, setEdges, onEdgesChange] =
     useEdgesState<CustomEdgeType>(initialEdges);
-  const onConnect: OnConnect = useCallback(
-    (connection) => setEdges((edges) => addEdge(connection, edges)),
-    [setEdges]
-  );
+  
+  const onConnect: OnConnect = useCallback((connection) => setEdges((edges) => addEdge(connection, edges)),[setEdges]);
 
   return (
     <ReactFlow<CustomNodeType, CustomEdgeType>
@@ -35,6 +36,7 @@ export default function App() {
       onConnect={onConnect}
       fitView
     >
+      <TestCustomComponent></TestCustomComponent>
       <Background />
       <MiniMap />
       <Controls />

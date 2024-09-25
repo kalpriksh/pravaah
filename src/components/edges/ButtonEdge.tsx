@@ -62,8 +62,8 @@ export default function ButtonEdge({
           }}
           className="nodrag nopan"
         >
-          <button style={buttonStyle} onClick={onEdgeClick}>
-            ×
+          <button  onClick={onEdgeClick}>
+            click to delete
           </button>
         </div>
       </EdgeLabelRenderer>

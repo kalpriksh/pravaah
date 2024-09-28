@@ -15,20 +15,28 @@ import "@xyflow/react/dist/style.css";
 import { initialNodes, nodeTypes, type CustomNodeType } from "./nodes";
 import { initialEdges, edgeTypes, type CustomEdgeType } from "./edges";
 
-import  FlowEditorComponent  from "./FlowEditorComponent"
+import FlowEditorComponent from "./FlowEditorComponent";
 
 export default function App() {
-  const [nodes, , onNodesChange] = useNodesState<CustomNodeType>(initialNodes);
-  
-  const [edges, setEdges, onEdgesChange] =
-    useEdgesState<CustomEdgeType>(initialEdges);
-  
-  const onConnect: OnConnect = useCallback((connection) => setEdges((edges) => addEdge(connection, edges)),[setEdges]);
+  const [nodes, setNodes, onNodesChange] = useNodesState<CustomNodeType>(initialNodes);
+  const [edges, setEdges, onEdgesChange] = useEdgesState<CustomEdgeType>(initialEdges);
+
+  const onConnect: OnConnect = useCallback(
+    (connection) => setEdges((edges) => addEdge(connection, edges)),
+    [setEdges]
+  );
 
   // node create button is pressed
-  const onCreateNode = () => {
-    console.log('reached');
-  }
+  const onCreateNode = useCallback(() => {
+    const newNode = {
+      id: (nodes.length + 1).toString(), // Generate new unique id
+      data: { label: `Node ${nodes.length + 1}` }, // Set label
+      position: { x: Math.random() * 300, y: Math.random() * 300 }, // Random position
+      type: 'default', // Default node type or custom type if needed
+    };
+
+    setNodes((prevNodes) => [...prevNodes, newNode]); // Add new node to the list
+  }, [nodes, setNodes]);
 
   return (
     <div className="grid grid-cols-5">
@@ -45,13 +53,9 @@ export default function App() {
           onEdgesChange={onEdgesChange}
           onConnect={onConnect}
           fitView
-          // style={{
-          //   backgroundColor: '#1e293b', // Tailwind's slate-800 for dark background
-          //   color: '#f8fafc',            // Tailwind's slate-100 for text
-          // }}
         >
           <Background color="#334155" gap={16} />
-          <MiniMap nodeColor={() => '#f8fafc'} />
+          <MiniMap nodeColor={() => "#f8fafc"} />
           <Controls />
         </ReactFlow>
       </div>

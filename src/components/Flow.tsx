@@ -1,4 +1,4 @@
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import {
   Background,
   Controls,
@@ -15,7 +15,7 @@ import "@xyflow/react/dist/style.css";
 import { initialNodes, nodeTypes, type CustomNodeType } from "./nodes";
 import { initialEdges, edgeTypes, type CustomEdgeType } from "./edges";
 
-import  TestCustomComponent  from "./TestCustomComponent"
+import  FlowEditorComponent  from "./FlowEditorComponent"
 
 export default function App() {
   const [nodes, , onNodesChange] = useNodesState<CustomNodeType>(initialNodes);
@@ -25,20 +25,36 @@ export default function App() {
   
   const onConnect: OnConnect = useCallback((connection) => setEdges((edges) => addEdge(connection, edges)),[setEdges]);
 
+  // node create button is pressed
+  const onCreateNode = () => {
+    console.log('reached');
+  }
+
   return (
-    <ReactFlow<CustomNodeType, CustomEdgeType>
-      nodes={nodes}
-      nodeTypes={nodeTypes}
-      onNodesChange={onNodesChange}
-      edges={edges}
-      edgeTypes={edgeTypes}
-      onEdgesChange={onEdgesChange}
-      onConnect={onConnect}
-      fitView
-    >
-      <Background />
-      <MiniMap />
-      <Controls />
-    </ReactFlow>
+    <div className="grid grid-cols-5">
+      <div>
+        <FlowEditorComponent onCreateNode={onCreateNode}></FlowEditorComponent>
+      </div>
+      <div className="h-screen col-span-4">
+        <ReactFlow<CustomNodeType, CustomEdgeType>
+          nodes={nodes}
+          nodeTypes={nodeTypes}
+          onNodesChange={onNodesChange}
+          edges={edges}
+          edgeTypes={edgeTypes}
+          onEdgesChange={onEdgesChange}
+          onConnect={onConnect}
+          fitView
+          // style={{
+          //   backgroundColor: '#1e293b', // Tailwind's slate-800 for dark background
+          //   color: '#f8fafc',            // Tailwind's slate-100 for text
+          // }}
+        >
+          <Background color="#334155" gap={16} />
+          <MiniMap nodeColor={() => '#f8fafc'} />
+          <Controls />
+        </ReactFlow>
+      </div>
+    </div>
   );
 }

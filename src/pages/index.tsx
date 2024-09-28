@@ -2,7 +2,6 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import Flow from 'components/Flow';
-import NodeMenuComponent from 'components/NodeMenuComponent';
 
 
 import styles from '../styles/Home.module.css';
@@ -20,11 +19,7 @@ const Home: NextPage = () => {
       <header className={styles.header}>Pravah 🍃</header>
       <div>
         
-      </div>
-      
-      <div className='grid grid-cols-5 '>
-        <div className='h-screen bg-slate-300'><NodeMenuComponent/></div>
-        <div className='h-screen col-span-4'><Flow/></div>
+      <Flow/> 
       </div>
       
     </div>

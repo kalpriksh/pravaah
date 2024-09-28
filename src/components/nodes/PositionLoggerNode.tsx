@@ -18,7 +18,7 @@ export default function PositionLoggerNode({
   return (
     // We add this class to use the same styles as React Flow's default nodes.
 
-    <div className="react-flow__node-default">
+    <div className="bg-blue-600 text-white p-4 rounded-lg shadow-lg">
 
       {data.label && <div>{data.label}</div>}
 
@@ -26,7 +26,10 @@ export default function PositionLoggerNode({
         {x} {y}
       </div>
 
-      <Handle type="source" position={Position.Right} />
+      <Handle type="source"
+      className="w-2 h-2 bg-yellow-400 rounded-full"
+      position={Position.Bottom} />
+      
     </div>
   );
 }

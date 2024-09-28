@@ -2,6 +2,8 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 import Flow from 'components/Flow';
+import NodeMenuComponent from 'components/NodeMenuComponent';
+
 
 import styles from '../styles/Home.module.css';
 
@@ -21,7 +23,7 @@ const Home: NextPage = () => {
       </div>
       
       <div className='grid grid-cols-5 '>
-        <div className='drop-shadow-2xl bg-lime-300'>menu here</div>
+        <div className='h-screen bg-slate-300'><NodeMenuComponent/></div>
         <div className='h-screen col-span-4'><Flow/></div>
       </div>
       

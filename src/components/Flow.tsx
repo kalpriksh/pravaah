@@ -36,7 +36,6 @@ export default function App() {
       onConnect={onConnect}
       fitView
     >
-      <TestCustomComponent></TestCustomComponent>
       <Background />
       <MiniMap />
       <Controls />

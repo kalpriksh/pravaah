@@ -7,7 +7,7 @@ import styles from '../styles/Home.module.css';
 
 const Home: NextPage = () => {
   return (
-    <div className='h-screen'>
+    <div>
 
       <Head>
         <title>Pravah</title>
@@ -20,7 +20,11 @@ const Home: NextPage = () => {
         
       </div>
       
-      <Flow/>
+      <div className='grid grid-cols-5 '>
+        <div className='drop-shadow-2xl bg-lime-300'>menu here</div>
+        <div className='h-screen col-span-4'><Flow/></div>
+      </div>
+      
     </div>
   );
 };

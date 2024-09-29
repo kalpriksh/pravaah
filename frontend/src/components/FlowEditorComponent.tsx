@@ -16,6 +16,13 @@ const FlowEditorComponent: React.FC<FlowEditorComponentProps> = ({ onCreateNode 
       >
         Create Node
       </button>
+
+      <button 
+        className="drop-shadow-xl bg-slate-300 hover:bg-slate-400 text-black py-2 px-4 rounded"
+        onClick={handleClick}
+      >
+        Save Flow
+      </button>
     </div>
   );
 };

@@ -12,13 +12,14 @@ export default function PositionLoggerNode({
   positionAbsoluteY,
   data,
 }: NodeProps<PositionLoggerNode>) {
+  
   const x = `${Math.round(positionAbsoluteX)}px`;
   const y = `${Math.round(positionAbsoluteY)}px`;
 
   return (
     // We add this class to use the same styles as React Flow's default nodes.
 
-    <div className="bg-blue-600 text-white p-4 rounded-lg shadow-lg">
+    <div className="bg-white text-black border-2 border-black p-4 rounded-lg hover:shadow-lg hover:border-blue">
 
       {data.label && <div>{data.label}</div>}
 
@@ -29,7 +30,7 @@ export default function PositionLoggerNode({
       <Handle type="source"
       className="w-2 h-2 bg-yellow-400 rounded-full"
       position={Position.Bottom} />
-      
+
     </div>
   );
 }
